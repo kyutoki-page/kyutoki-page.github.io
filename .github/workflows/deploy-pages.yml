@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -24,6 +26,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Sync public Wix pages
+        run: python scripts/sync_wix.py --output-dir "${{ runner.temp }}/site-copy"
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
         with:
@@ -31,7 +39,7 @@ jobs:
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site-copy
+          path: ${{ runner.temp }}/site-copy
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
