@@ -1,3 +1,6 @@
 {
-  "css.lint.vendorPrefix": "ignore"
+  "css.lint.vendorPrefix": "ignore",
+  "files.exclude": {
+    "site-copy": true
+  }
 }

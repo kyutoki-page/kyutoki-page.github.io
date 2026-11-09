@@ -1,8 +1,8 @@
 # pages
 
-Static copy of the public Wix viewer pages, published with GitHub Pages:
+Live Wix viewer page embedded at a fixed GitHub Pages URL:
 
 https://elemake2024-dot.github.io/pages/
 
 The workflow in `.github/workflows/deploy-pages.yml` deploys `site-copy/` on pushes to `main`.
-The copy contains the published viewer pages, not the Wix editor. Changes made later in Wix are not synchronized automatically.
+The page content is loaded directly from Wix, so published Wix changes appear without copying files. The Wix editor is not embedded.
